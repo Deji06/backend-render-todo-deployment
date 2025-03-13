@@ -1,3 +1,4 @@
+//  @ts-ignore
 const express = require('express')
 require('dotenv').config()
 const app = express()
@@ -5,11 +6,11 @@ const connectDb = require('./DB/connect')
 const authrouter = require('./routes/user')
 const taskRouter = require('./routes/task')
 const notFound = require('./errors/notFound')
-const {createCustomError} = require('./errors/customError')
+// const {createCustomError} = require('./errors/customError')
 const errorHandlerMiddleWare = require('./middleWare/errorHandler')
 const userAuthentication = require('./middleWare/authentication')
 const helmet = require('helmet')
-const xss = require('xss')
+// const xss = require('xss-clean')
 const cors = require('cors')
 const rateLimiter = require('express-rate-limit')
 
@@ -26,7 +27,7 @@ app.use(rateLimiter({
 app.use(express.json())
 app.use(helmet())
 app.use(cors())
-app.use(xss())
+// app.use(xss())
 
 // router
 app.use('/api/v1/auth', authrouter)

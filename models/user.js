@@ -42,4 +42,4 @@ userSchema.methods.confirmPassword = async function (incomingPassword) {
     return isMatch
 }
 
-module.exports = mongoose.model('User', userSchema)
+module.exports = mongoose.model('User', userSchema, "users")
